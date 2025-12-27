@@ -1,0 +1,1 @@
+/home/marcopcg/programming/design-pattern/composite/rust/target/debug/rust: /home/marcopcg/programming/design-pattern/composite/rust/src/fs/file.rs /home/marcopcg/programming/design-pattern/composite/rust/src/fs/folder.rs /home/marcopcg/programming/design-pattern/composite/rust/src/fs/mod.rs /home/marcopcg/programming/design-pattern/composite/rust/src/main.rs
