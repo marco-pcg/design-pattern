@@ -1,4 +1,7 @@
+import type { JSX } from "react"
 import type { TweetProps } from "../tweet/Tweet"
+import { TweetCategory } from "./TweetCategory"
+import { TweetRow } from "./TweetRow"
 
 export type TweetListProps = {
     tweets: TweetProps[]
@@ -12,7 +15,7 @@ export function TweetList({
     inThisLocation
 }: TweetListProps) {
 
-    const rows: string[] = []
+    const rows: JSX.Element[] = []
     let lastCategory: string | null = null
 
     tweets.forEach((tweet) => {
@@ -24,12 +27,13 @@ export function TweetList({
         }
         if (tweet.category !== lastCategory) {
             rows.push(
-                <TweetCategory 
-                
+                <TweetCategory
+                    category={tweet.category}
+                    key={tweet.category}
                 />
             )
         }
-        rows.push(<TweetRow />)
+        rows.push(<TweetRow tweet={tweet} key={tweet.text} />)
         lastCategory = tweet.category
     })
 

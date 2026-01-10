@@ -3,7 +3,9 @@ export type TweetCategoryProps = {
 }
 
 export function TweetCategory({ category }: TweetCategoryProps) {
-    <tr>
-        <th colSpan={2}>{category}</th>
-    </tr>
+    return (
+        <tr>
+            <th colSpan={2}>{category}</th>
+        </tr>
+    )
 }

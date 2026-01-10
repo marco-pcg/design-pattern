@@ -13,22 +13,24 @@ export function SearchBar({
     setFilterText,
     setInThisLocation
 }: SearchBarProps) {
-    <form>
-        <input 
-            type="text"
-            placeholder="Search..."
-            value={filterText}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setFilterText(e.target.value)} 
-        />
-        <p>
-            <label>
-                <input 
-                    type="checkbox"
-                    checked={inThisLocation}
-                    onChange={ (e: ChangeEvent<HTMLInputElement>) => setInThisLocation(e.target.checked)}
-                />{" "}
-                Only show tweets in your current location
-            </label>
-        </p>
-    </form>
+    return (
+        <form>
+            <input 
+                type="text"
+                placeholder="Search..."
+                value={filterText}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setFilterText(e.target.value)} 
+            />
+            <p>
+                <label>
+                    <input 
+                        type="checkbox"
+                        checked={inThisLocation}
+                        onChange={ (e: ChangeEvent<HTMLInputElement>) => setInThisLocation(e.target.checked)}
+                    />{" "}
+                    Only show tweets in your current location
+                </label>
+            </p>
+        </form>
+    )
 }

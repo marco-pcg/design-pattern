@@ -3,6 +3,7 @@ import { User, type TweetUser } from "./User";
 
 export type TweetProps = {
     author: TweetUser
+    retweets: string[]
     text: string
     image?: TweetImage
     isLocal: boolean
