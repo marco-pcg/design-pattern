@@ -5,6 +5,8 @@ export type TweetProps = {
     author: TweetUser
     text: string
     image?: TweetImage
+    isLocal: boolean
+    category: string
     date: Date
 }
 
