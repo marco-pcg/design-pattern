@@ -1,20 +1,26 @@
+import { withLoader } from "./withLoader"
 
 export type DogImageProps = {
-    dogs: string[]
+    data: { message: string[] }
 }
 
-export default function DogImages({
-    dogs
+function DogImages({
+    data
 }: DogImageProps) {
     return (
         <>
-            {dogs.map((dogUrl, index) => {
+            {data.message.map((url, index) => {
                 <img
                     key={index}
-                    src={dogUrl}
+                    src={url}
                     alt="Dog"
                 />
             })}
         </>
     )
 }
+
+export default withLoader(
+    DogImages,
+    "https://dog.ceo/api/breed/labrador/images/random/6"
+)
