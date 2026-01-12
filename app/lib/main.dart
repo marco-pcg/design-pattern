@@ -1,7 +1,6 @@
 import 'package:app/app/app_router.dart';
 import 'package:app/app/theme_controller.dart';
 import 'package:app/app/theme_toggle.dart';
-import 'package:app/features/container_presentational/dog_images_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -47,8 +46,8 @@ class MyHomePage extends StatelessWidget {
       body: ListView(
         children: [
           _NavItem(
-            title: 'Container / Presentational',
-            route: AppRoutes.container
+            title: 'HOC Wrapper',
+            route: AppRoutes.hoc
           ),
         ]
       ),
