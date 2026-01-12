@@ -1,8 +1,17 @@
-import 'package:app/DogImagesContainer.dart';
+import 'package:app/app/app_router.dart';
+import 'package:app/app/theme_controller.dart';
+import 'package:app/app/theme_toggle.dart';
+import 'package:app/features/container_presentational/dog_images_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeController(),
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,13 +20,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final themeController = context.watch<ThemeController>();
+
     return MaterialApp(
       title: 'Flutter Design Patterns',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(),
+      themeMode: themeController.mode,
+      theme: ThemeData.light(useMaterial3: true),
+      darkTheme: ThemeData.dark(useMaterial3: true),
+      onGenerateRoute: AppRoutes.generate,
+      initialRoute: AppRoutes.home,
     );
   }
 }
@@ -30,18 +41,36 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Design Patterns Demo'),
+        title: const Text('Flutter Design Patterns'),
+        actions: const [ThemeToggle()],
       ),
       body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: const [
-          SectionTitle('Container / Presentational'),
-          SizedBox(height: 200, child: DogImagesContainer())
-        ],
+        children: [
+          _NavItem(
+            title: 'Container / Presentational',
+            route: AppRoutes.container
+          ),
+        ]
       ),
     );
   }
 
+}
+
+class _NavItem extends StatelessWidget {
+  final String title;
+  final String route;
+
+  const _NavItem({required this.title, required this.route});
+
+  @override
+  Widget build(BuildContext context){
+    return ListTile(
+      title: Text(title),
+      trailing: const Icon(Icons.arrow_forward),
+      onTap: () => Navigator.pushNamed(context, route),
+    );
+  }
 }
 
 class SectionTitle extends StatelessWidget {

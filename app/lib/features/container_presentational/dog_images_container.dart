@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:app/DogImagesView.dart';
+import 'package:app/features/container_presentational/dog_images_view.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
